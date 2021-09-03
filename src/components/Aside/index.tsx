@@ -54,7 +54,7 @@ const Aside: React.FC = () => {
                 </ToggleMenu>
 
                 <LogImg src={logoImg} alt="Logo My Wallet" />
-                <Title>Minha Carteira</Title>
+                <Title>My Wallet</Title>
             </Header>
 
             <MenuContainer>

@@ -26,7 +26,7 @@ import {
 
 
 const Dashboard: React.FC = () => {
-    const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1);
+    const [monthSelected, setMonthSelected] = useState<number>(6);
     const [yearSelected, setYearSelected] = useState<number>(2020);
 
 
@@ -109,33 +109,33 @@ const Dashboard: React.FC = () => {
     const message = useMemo(() => {
         if(totalBalance < 0){
             return {
-                title: "Que triste!",
-                description: "Neste mês, você gastou mais do que deveria.",
-                footerText: "Verifique seus gastos e tente cortar algumas coisas desnecessárias.",
+                title: "How sad!",
+                description: "This month, you had a lot of expenses.",
+                footerText: "Verify your expenses and try to buy less.",
                 icon: sadImg
             }
         }
         else if(totalGains === 0 && totalExpenses === 0){
             return {
                 title: "Op's!",
-                description: "Neste mês, não há registros de entradas ou saídas.",
-                footerText: "Parece que você não fez nenhum registro no mês e ano selecionado.",
+                description: "No Log.",
+                footerText: "There are no logs.",
                 icon: opsImg
             }
         }
         else if(totalBalance === 0){
             return {
-                title: "Ufaa!",
-                description: "Neste mês, você gastou exatamente o que ganhou.",
-                footerText: "Tenha cuidado. No próximo tente poupar o seu dinheiro.",
+                title: "Good!",
+                description: "This month, you ended 0 on 0.",
+                footerText: "Watch out. Next month try to be careful.",
                 icon: grinningImg
             }
         }
         else{
             return {
-                title: "Muito bem!",
-                description: "Sua carteira está positiva!",
-                footerText: "Continue assim. Considere investir o seu saldo.",
+                title: "Well Done!",
+                description: "Your wallet is going well!",
+                footerText: "Keep going like this. ",
                 icon: happyImg
             }
         }
@@ -341,10 +341,10 @@ const Dashboard: React.FC = () => {
 
             <Content>
                 <WalletBox
-                    title="saldo"
+                    title="Wallet"
                     color="#4E41F0"
                     amount={totalBalance}
-                    footerlabel="atualizado com base nas entradas e saídas"
+                    footerlabel="based on your gains and expenses"
                     icon="dolar"
                 />
 
@@ -352,7 +352,7 @@ const Dashboard: React.FC = () => {
                     title="Gains"
                     color="#F7931B"
                     amount={totalGains}
-                    footerlabel="atualizado com base nas entradas e saídas"
+                    footerlabel="based on your gains and expenses"
                     icon="arrowUp"
                 />
 
@@ -360,7 +360,7 @@ const Dashboard: React.FC = () => {
                     title="Expenses"
                     color="#E44C4E"
                     amount={totalExpenses}
-                    footerlabel="atualizado com base nas entradas e saídas"
+                    footerlabel="based on your gains and expenses"
                     icon="arrowDown"
                 />
 
