@@ -5,18 +5,18 @@ import emojis from '../../utils/emojis';
 
 import { useTheme } from '../../hooks/theme';
 
-import { 
-    Container, 
-    Profile, 
-    Welcome, 
-    UserName, 
+import {
+    Container,
+    Profile,
+    Welcome,
+    UserName,
 }  from './styles';
 
 
 const MainHeader: React.FC = () => {
     const { toggleTheme, theme } = useTheme();
 
-    const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark' ? true : false);
+    const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark');
 
     const handleChangeTheme = () => {
         setDarkTheme(!darkTheme);
@@ -38,8 +38,8 @@ const MainHeader: React.FC = () => {
             />
 
             <Profile>
-                <Welcome>Olá, {emoji}</Welcome>
-                <UserName>Rodrigo Gonçalves</UserName>
+                <Welcome>Hello, {emoji}</Welcome>
+                <UserName>User</UserName>
             </Profile>
         </Container>
     );

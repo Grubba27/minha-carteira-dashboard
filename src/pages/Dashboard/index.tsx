@@ -19,15 +19,15 @@ import grinningImg from '../../assets/grinning.svg';
 import opsImg from '../../assets/ops.svg';
 
 
-import { 
+import {
     Container,
-    Content, 
+    Content,
 } from './styles';
 
 
 const Dashboard: React.FC = () => {
     const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1);
-    const [yearSelected, setYearSelected] = useState<number>(new Date().getFullYear());
+    const [yearSelected, setYearSelected] = useState<number>(2020);
 
 
     const years = useMemo(() => {
@@ -59,8 +59,8 @@ const Dashboard: React.FC = () => {
             }
         });
     },[]);
-    
-    
+
+
     const totalExpenses = useMemo(() => {
         let total: number = 0;
 
@@ -114,7 +114,7 @@ const Dashboard: React.FC = () => {
                 footerText: "Verifique seus gastos e tente cortar algumas coisas desnecessárias.",
                 icon: sadImg
             }
-        }      
+        }
         else if(totalGains === 0 && totalExpenses === 0){
             return {
                 title: "Op's!",
@@ -150,15 +150,15 @@ const Dashboard: React.FC = () => {
 
         const data = [
             {
-                name: "Entradas",
+                name: "Gains",
                 value: totalGains,
-                percent: percentGains ? percentGains : 0, 
+                percent: percentGains ? percentGains : 0,
                 color: '#E44C4E'
             },
             {
-                name: "Saídas",
+                name: "Expenses",
                 value: totalExpenses,
-                percent: percentExpenses ? percentExpenses : 0, 
+                percent: percentExpenses ? percentExpenses : 0,
                 color: '#F7931B'
             },
         ];
@@ -169,7 +169,7 @@ const Dashboard: React.FC = () => {
     const historyData = useMemo(() => {
         return listOfMonths
         .map((_, month) => {
-            
+
             let amountEntry = 0;
             gains.forEach(gain => {
                 const date = new Date(gain.date);
@@ -228,7 +228,7 @@ const Dashboard: React.FC = () => {
             return month === monthSelected && year === yearSelected;
         })
         .forEach((expense) => {
-            if(expense.frequency === 'recorrente'){
+            if(expense.frequency === 'recurring'){
                 return amountRecurrent += Number(expense.amount);
             }
 
@@ -244,13 +244,13 @@ const Dashboard: React.FC = () => {
 
         return [
             {
-                name: 'Recorrentes',
+                name: 'Recurring',
                 amount: amountRecurrent,
-                percent: percentRecurrent ? percentRecurrent : 0, 
+                percent: percentRecurrent ? percentRecurrent : 0,
                 color: "#F7931B"
             },
             {
-                name: 'Eventuais',
+                name: 'Eventual',
                 amount: amountEventual,
                 percent: percentEventual ? percentEventual : 0,
                 color: "#E44C4E"
@@ -272,7 +272,7 @@ const Dashboard: React.FC = () => {
             return month === monthSelected && year === yearSelected;
         })
         .forEach((gain) => {
-            if(gain.frequency === 'recorrente'){
+            if(gain.frequency === 'recurring'){
                 return amountRecurrent += Number(gain.amount);
             }
 
@@ -288,7 +288,7 @@ const Dashboard: React.FC = () => {
 
         return [
             {
-                name: 'Recorrentes',
+                name: 'Recurring',
                 amount: amountRecurrent,
                 percent: percentRecurrent ? percentRecurrent : 0,
                 color: "#F7931B"
@@ -327,20 +327,20 @@ const Dashboard: React.FC = () => {
     return (
         <Container>
             <ContentHeader title="Dashboard" lineColor="#F7931B">
-                <SelectInput 
+                <SelectInput
                     options={months}
-                    onChange={(e) => handleMonthSelected(e.target.value)} 
+                    onChange={(e) => handleMonthSelected(e.target.value)}
                     defaultValue={monthSelected}
                 />
-                <SelectInput 
-                    options={years} 
-                    onChange={(e) => handleYearSelected(e.target.value)} 
+                <SelectInput
+                    options={years}
+                    onChange={(e) => handleYearSelected(e.target.value)}
                     defaultValue={yearSelected}
                 />
             </ContentHeader>
 
             <Content>
-                <WalletBox 
+                <WalletBox
                     title="saldo"
                     color="#4E41F0"
                     amount={totalBalance}
@@ -348,16 +348,16 @@ const Dashboard: React.FC = () => {
                     icon="dolar"
                 />
 
-                <WalletBox 
-                    title="entradas"
+                <WalletBox
+                    title="Gains"
                     color="#F7931B"
                     amount={totalGains}
                     footerlabel="atualizado com base nas entradas e saídas"
                     icon="arrowUp"
                 />
 
-                <WalletBox 
-                    title="saídas"
+                <WalletBox
+                    title="Expenses"
                     color="#E44C4E"
                     amount={totalExpenses}
                     footerlabel="atualizado com base nas entradas e saídas"
@@ -373,22 +373,22 @@ const Dashboard: React.FC = () => {
 
                 <PieChartBox data={relationExpensesVersusGains} />
 
-                <HistoryBox 
-                    data={historyData} 
+                <HistoryBox
+                    data={historyData}
                     lineColorAmountEntry="#F7931B"
                     lineColorAmountOutput="#E44C4E"
                 />
 
-                <BarChartBox 
-                    title="Saídas"
-                    data={relationExpensevesRecurrentVersusEventual} 
+                <BarChartBox
+                    title="Expenses"
+                    data={relationExpensevesRecurrentVersusEventual}
                 />
-                
-                <BarChartBox 
-                    title="Entradas"
-                    data={relationGainsRecurrentVersusEventual} 
+
+                <BarChartBox
+                    title="Gains"
+                    data={relationGainsRecurrentVersusEventual}
                 />
-                
+
             </Content>
         </Container>
     );
