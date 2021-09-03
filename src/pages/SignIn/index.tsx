@@ -16,7 +16,7 @@ import {
 
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');    
+    const [password, setPassword] = useState<string>('');
 
     const { signIn } = useAuth();
 
@@ -24,21 +24,21 @@ const SignIn: React.FC = () => {
         <Container>
             <Logo>
                 <img src={logoImg} alt="Minha Carteira" />
-                <h2>Minha Carteira</h2>
+                <h2>My Wallet</h2>
             </Logo>
 
             <Form onSubmit={() => signIn(email, password)}>
-                <FormTitle>Entrar</FormTitle>
+                <FormTitle>Log In</FormTitle>
 
-                <Input 
+                <Input
                     type="email"
-                    placeholder="e-mail"
+                    placeholder="admin@email.com"
                     required
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <Input 
+                <Input
                     type="password"
-                    placeholder="senha"
+                    placeholder="123"
                     required
                     onChange={(e) => setPassword(e.target.value)}
                 />
