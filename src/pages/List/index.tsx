@@ -37,7 +37,7 @@ interface IData {
 const List: React.FC<IRouteParams> = ({ match }) => {
     const [data, setData] = useState<IData[]>([]);
     const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1);
-    const [yearSelected, setYearSelected] = useState<number>(new Date().getFullYear());
+    const [yearSelected, setYearSelected] = useState<number>(2020);
     const [frequencyFilterSelected, setFrequencyFilterSelected] = useState(['recurring', 'eventual']);
 
     const movimentType = match.params.type;
@@ -174,7 +174,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                     ${frequencyFilterSelected.includes('recorrente') && 'tag-actived'}`}
                     onClick={() => handleFrequencyClick('recorrente')}
                 >
-                    Recorrentes
+                    Recurring
                 </button>
 
                 <button
@@ -185,7 +185,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                     ${frequencyFilterSelected.includes('eventual') && 'tag-actived'}`}
                     onClick={() => handleFrequencyClick('eventual')}
                 >
-                    Eventuais
+                    Eventual
                 </button>
             </Filters>
 
