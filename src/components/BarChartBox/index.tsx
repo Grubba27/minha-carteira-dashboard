@@ -9,7 +9,7 @@ import {
 
 import formatCurrency from '../../utils/formatCurrency';
 
-import {
+import { 
     Container,
     SideLeft,
     SideRight,
@@ -38,34 +38,34 @@ const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => (
                             <Legend key={indicator.name} color={indicator.color}>
                             <div>{indicator.percent}%</div>
                             <span>{indicator.name}</span>
-                            </Legend>
-                        ))
+                            </Legend>  
+                        ))              
                     }
                 </LegendContainer>
             </SideLeft>
-
+            
 
             <SideRight>
                 <ResponsiveContainer>
-                    <BarChart data={data}>
-                        <Bar dataKey="amount" name="Value">
+                    <BarChart data={data}>                    
+                        <Bar dataKey="amount" name="Valor">
                             {
                                 data.map((indicator) => (
-                                    <Cell
+                                    <Cell 
                                         key={indicator.name}
                                         fill={indicator.color}
-                                        cursor="pointer"
+                                        cursor="pointer"    
                                     />
                                 ))
                             }
-                        </Bar>
-                        <Tooltip
+                        </Bar>   
+                        <Tooltip 
                             cursor={{fill: 'none'}}
-                            formatter={(value) => formatCurrency(Number(value))}
+                            formatter={(value) => formatCurrency(Number(value))} 
                         />
                     </BarChart>
                 </ResponsiveContainer>
-            </SideRight>
+            </SideRight>       
         </Container>
     );
 

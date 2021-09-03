@@ -7,7 +7,7 @@ import {
     MdArrowUpward,
     MdExitToApp,
     MdClose,
-    MdMenu,
+    MdMenu, 
 } from 'react-icons/md';
 
 import logoImg from '../../assets/logo.svg';
@@ -15,7 +15,7 @@ import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../hooks/auth';
 import { useTheme } from '../../hooks/theme';
 
-import {
+import { 
     Container,
     Header,
     LogImg,
@@ -32,7 +32,7 @@ const Aside: React.FC = () => {
     const { toggleTheme, theme } = useTheme();
 
     const [toggleMenuIsOpened, setToggleMenuIsOpened ] = useState(false);
-    const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark');
+    const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark' ? true : false);
 
 
     const handleToggleMenu = () => {
@@ -53,7 +53,7 @@ const Aside: React.FC = () => {
                 { toggleMenuIsOpened ? <MdClose /> : <MdMenu /> }
                 </ToggleMenu>
 
-                <LogImg src={logoImg} alt="Logo My Wallet" />
+                <LogImg src={logoImg} alt="Logo Minha Carteira" />
                 <Title>Minha Carteira</Title>
             </Header>
 
@@ -65,17 +65,17 @@ const Aside: React.FC = () => {
 
                 <MenuItemLink href="/list/entry-balance">
                     <MdArrowUpward />
-                    Gains
+                    Entradas
                 </MenuItemLink>
 
                 <MenuItemLink href="/list/exit-balance">
                     <MdArrowDownward />
-                    Expenses
+                    Saídas
                 </MenuItemLink>
 
                 <MenuItemButton onClick={signOut}>
                     <MdExitToApp />
-                    Log Out
+                    Sair
                 </MenuItemButton>
             </MenuContainer>
 

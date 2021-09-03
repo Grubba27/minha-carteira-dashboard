@@ -10,8 +10,8 @@ import {
 
 import formatCurrency from '../../utils/formatCurrency';
 
-import {
-    Container,
+import { 
+    Container, 
     ChartContainer,
     Header,
     LegendContainer,
@@ -34,17 +34,17 @@ const HistoryBox: React.FC<IHistoryBoxProps> = ({
 }) => (
     <Container>
         <Header>
-            <h2>History</h2>
+            <h2>Histórico de saldo</h2>
 
             <LegendContainer>
                 <Legend color={lineColorAmountEntry}>
-                    <div/>
-                    <span>Gains</span>
+                    <div></div>
+                    <span>Entradas</span>
                 </Legend>
-
+           
                 <Legend color={lineColorAmountOutput}>
-                    <div/>
-                    <span>Expenses</span>
+                    <div></div>
+                    <span>Saídas</span>
                 </Legend>
             </LegendContainer>
         </Header>
@@ -55,19 +55,19 @@ const HistoryBox: React.FC<IHistoryBoxProps> = ({
                     <CartesianGrid strokeDasharray="3 3" stroke="#cecece" />
                     <XAxis dataKey="month" stroke="#cecece" />
                     <Tooltip formatter={(value) => formatCurrency(Number(value))} />
-                    <Line
-                        type="monotone"
+                    <Line 
+                        type="monotone"                
                         dataKey="amountEntry"
-                        name="Gains"
+                        name="Entradas"
                         stroke={lineColorAmountEntry}
                         strokeWidth={5}
                         dot={{ r: 5}}
                         activeDot={{ r: 8}}
                     />
-                    <Line
-                        type="monotone"
+                    <Line 
+                        type="monotone"                
                         dataKey="amountOutput"
-                        name="Expenses"
+                        name="Saídas"
                         stroke={lineColorAmountOutput}
                         strokeWidth={5}
                         dot={{ r: 5}}

@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 interface IAuthContext {
     logged: boolean;
@@ -10,22 +10,22 @@ const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 const AuthProvider: React.FC = ({ children }) => {
     const [logged, setLogged] = useState<boolean>(() => {
-        const isLogged = localStorage.getItem('@my-wallet:logged');
+        const isLogged = localStorage.getItem('@minha-carteira:logged');
 
         return !!isLogged;
     });
 
     const signIn = (email: string, password: string) => {
-        if(email === 'admin@email.com' && password === '123'){
-            localStorage.setItem('@my-wallet:logged', 'true');
+        if(email === 'rodrigo@email.com' && password === '123'){
+            localStorage.setItem('@minha-carteira:logged', 'true');
             setLogged(true);
         }else{
-            alert('email is admin@email.com and password is 123!');
+            alert('Senha ou usuário inválidos!');
         }
     }
 
     const signOut = () => {
-        localStorage.removeItem('@my-wallet:logged');
+        localStorage.removeItem('@minha-carteira:logged');
         setLogged(false);
     }
 
@@ -37,7 +37,9 @@ const AuthProvider: React.FC = ({ children }) => {
 }
 
 function useAuth(): IAuthContext {
-    return useContext(AuthContext);
+    const context = useContext(AuthContext);
+
+    return context;
 }
 
 export { AuthProvider, useAuth };

@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 import dark from '../styles/themes/dark';
 import light from '../styles/themes/light';
@@ -30,7 +30,7 @@ const ThemeContext = createContext<IThemeContext>({} as IThemeContext);
 
 const ThemeProvider: React.FC = ({ children }) => {
     const [theme, setTheme] = useState<ITheme>(() => {
-        const themeSaved = localStorage.getItem('@my-wallet:theme');
+        const themeSaved = localStorage.getItem('@minha-carteira:theme');
 
         if(themeSaved) {
             return JSON.parse(themeSaved);
@@ -42,10 +42,10 @@ const ThemeProvider: React.FC = ({ children }) => {
     const toggleTheme = () => {
         if(theme.title === 'dark'){
             setTheme(light);
-            localStorage.setItem('@my-wallet:theme', JSON.stringify(light));
+            localStorage.setItem('@minha-carteira:theme', JSON.stringify(light));
         }else{
             setTheme(dark);
-            localStorage.setItem('@my-wallet:theme', JSON.stringify(dark));
+            localStorage.setItem('@minha-carteira:theme', JSON.stringify(dark));
         }
     };
 
@@ -57,7 +57,9 @@ const ThemeProvider: React.FC = ({ children }) => {
 }
 
 function useTheme(): IThemeContext {
-    return useContext(ThemeContext);
+    const context = useContext(ThemeContext);
+
+    return context;
 }
 
 
