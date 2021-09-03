@@ -6,7 +6,7 @@ import {
     ResponsiveContainer
 } from 'recharts';
 
-import { 
+import {
     Container,
     SideLeft,
     LegendContainer,
@@ -27,15 +27,15 @@ import {
 const PieChartBox: React.FC<IPieChartProps> = ({ data }) => (
     <Container>
         <SideLeft>
-            <h2>Relação</h2>
+            <h2>Ratio</h2>
             <LegendContainer>
                 {
                     data.map((indicator) => (
                         <Legend key={indicator.name} color={indicator.color}>
                         <div>{indicator.percent}%</div>
                         <span>{indicator.name}</span>
-                        </Legend>  
-                    ))              
+                        </Legend>
+                    ))
                 }
             </LegendContainer>
         </SideLeft>
